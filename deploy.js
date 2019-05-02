@@ -1,9 +1,10 @@
-var cmd = require("node-cmd");
-var fs = require("fs");
-var path = require("path");
-var node_ssh = require("node-ssh");
-
+var cmd = require('node-cmd');
+var path, node_ssh, ssh, fs;
+fs = require('fs');
+path = require('path');
+node_ssh = require('node-ssh');
 ssh = new node_ssh();
+
 
 function main() {
     console.log("Deployment started");
@@ -46,7 +47,7 @@ function transferProjectToRemote(failed, successful) {
 // creates a temporary folder on the remote server
   function createRemoteTempFolder() {
     return ssh.execCommand(
-      'rm -rf stater-node-angular-temp && mkdir starter-node-angular-temp', {
+      'rm -rf starter-node-angular-temp && mkdir starter-node-angular-temp', {
         cwd: '/home/ubuntu'
     });
   }
